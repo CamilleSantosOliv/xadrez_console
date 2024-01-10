@@ -9,8 +9,8 @@
         public Peca(Posicao posicao, Tabuleiro tab, Cor cor) {
 
             this.Posicao = posicao;
-            this.Cor = cor;
             this.tab = tab;
+            this.Cor = cor;
             this.qtdMovimentos = 0;
         }
     }
