@@ -5,6 +5,7 @@ namespace xadrez_console {
     
     class Program {
     static void Main(string[] args) {
+            try {
 
             Tabuleiro tab = new Tabuleiro(8, 8);
 
@@ -14,8 +15,12 @@ namespace xadrez_console {
 
             Tela.imprimirTabuleiro(tab);
 
-            Console.ReadLine();
+            }
+            catch (TabuleiroException e) {
+                Console.WriteLine(e.Message);
+            }
 
+            Console.ReadLine();
         }
 }
 }
