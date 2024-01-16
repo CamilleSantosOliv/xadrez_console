@@ -1,10 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace tabuleiro {
-     class Tabuleiro {
+﻿namespace tabuleiro {
+    class Tabuleiro {
 
         public int linhas { get; set; }
-        public int colunas { get; set;}
+        public int colunas { get; set; }
 
         private Peca[,] pecas;
 
@@ -42,12 +40,23 @@ namespace tabuleiro {
             }
 
             pecas[pos.linha, pos.coluna] = p;
-            p.Posicao = pos;
+            p.posicao = pos;
+        }
+
+        public Peca retirarPeca(Posicao pos) {
+
+            if (peca(pos) == null) {
+                return null;
+            }
+            Peca aux = peca(pos);
+            aux.posicao = null;
+            pecas[pos.linha, pos.coluna] = null;
+            return aux;
         }
 
 
         public bool posicaoValida(Posicao pos) {
-           
+
             if (pos.linha < 0 || pos.linha >= linhas || pos.coluna < 0 || pos.coluna >= colunas) {
                 return false;
             }
@@ -65,3 +74,4 @@ namespace tabuleiro {
         }
     }
 }
+
