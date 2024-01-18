@@ -4,6 +4,36 @@ using tabuleiro;
 namespace xadrez_console {
      class Tela {
 
+        public static void imprimirPartida(partidaDe_Xadrez partida) {
+            imprimirTabuleiro(partida.tab);
+            Console.WriteLine();
+            imprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Turno: " + partida.turno);
+            Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+        }
+
+        public static void imprimirPecasCapturadas(partidaDe_Xadrez partida) {
+
+            Console.WriteLine("Pecas capturadas: ");
+            Console.WriteLine();
+            Console.Write("Amarelas: ");
+            imprimirConjunto(partida.pecasCapturadas(Cor.Amarela));
+            Console.WriteLine();
+            Console.Write("Verdes: ");
+            imprimirConjunto(partida.pecasCapturadas(Cor.Verde));
+        }
+
+        public static void imprimirConjunto(HashSet<Peca> conjunto) {
+
+            Console.Write("[");
+            foreach (Peca x in conjunto) {
+                Console.Write(x + " ");
+            }
+            Console.Write("]");
+        }
+
         public static void imprimirTabuleiro(Tabuleiro tab) {
 
             for (int i = 0; i < tab.linhas; i++) {
