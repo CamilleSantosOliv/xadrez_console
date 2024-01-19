@@ -4,14 +4,17 @@ using tabuleiro;
 namespace xadrez_console {
      class Tela {
 
-        public static void imprimirPartida(partidaDe_Xadrez partida) {
+        public static void imprimirPartida(partidaDe_Xadrez partida, Peca p) {
             imprimirTabuleiro(partida.tab);
             Console.WriteLine();
             imprimirPecasCapturadas(partida);
             Console.WriteLine();
-            Console.WriteLine();
             Console.WriteLine("Turno: " + partida.turno);
             Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+            Console.WriteLine();
+            if (partida.xeque) {
+                Console.WriteLine(p.cor + "está em XEQUE!");
+            }
         }
 
         public static void imprimirPecasCapturadas(partidaDe_Xadrez partida) {
@@ -19,10 +22,19 @@ namespace xadrez_console {
             Console.WriteLine("Pecas capturadas: ");
             Console.WriteLine();
             Console.Write("Amarelas: ");
+            ConsoleColor aux2 = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             imprimirConjunto(partida.pecasCapturadas(Cor.Amarela));
+            Console.ForegroundColor = aux2;
+
+
             Console.WriteLine();
             Console.Write("Verdes: ");
+            ConsoleColor aux = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Green;
             imprimirConjunto(partida.pecasCapturadas(Cor.Verde));
+            Console.ForegroundColor= aux;
+            Console.WriteLine();
         }
 
         public static void imprimirConjunto(HashSet<Peca> conjunto) {
