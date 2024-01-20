@@ -1,6 +1,5 @@
 ﻿using xadrez;
 using tabuleiro;
-using System.Linq.Expressions;
 
 namespace xadrez_console {
 
@@ -25,7 +24,7 @@ namespace xadrez_console {
                         Console.Clear();
                         Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
-
+                        Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeDestino(origem, destino);
@@ -38,6 +37,8 @@ namespace xadrez_console {
                     }
 
                 }
+                Console.Clear();
+                Tela.imprimirPartida(partida);
 
             }
             catch (TabuleiroException e) {
