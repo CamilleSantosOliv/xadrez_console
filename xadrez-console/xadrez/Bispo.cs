@@ -43,7 +43,7 @@ namespace xadrez {
             }
 
             //Movimentacao pro sudeste
-            pos.definirValores(posicao.linha + 1, posicao.coluna - 1);
+            pos.definirValores(posicao.linha + 1, posicao.coluna + 1);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor) {

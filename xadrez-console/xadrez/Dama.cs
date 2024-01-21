@@ -62,7 +62,7 @@ namespace xadrez {
             }
 
 
-            //Movimentacao para o noroste
+            //Movimentacao para o nordeste
             pos.definirValores(posicao.linha - 1, posicao.coluna - 1);
             while (tab.posicaoValida(pos) && podeMover(pos)) {
                 mat[pos.linha, pos.coluna] = true;
